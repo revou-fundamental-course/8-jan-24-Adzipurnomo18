@@ -1,71 +1,34 @@
-function calculateArea() {
-    var sideLengthArea = parseFloat(document.getElementById('sideArea').value);
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("calculatorForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevents the form from submitting and refreshing the page
+        hitung();
+    });
 
-    if (isNaN(sideLengthArea) || sideLengthArea <= 0) {
-        document.getElementById('resultArea').innerHTML = 'Masukkan panjang sisi yang valid.';
-    } else {
-        var area = calculateAreaValue(sideLengthArea);
-        document.getElementById('resultArea').innerHTML = 'Luas: ' + area.toFixed(2);
-    }
+    document.getElementById("resetButton").addEventListener("click", function () {
+        resetForm();
+    });
+});
+
+function hitung() {
+    var panjang = parseFloat(document.getElementById('panjang').value);
+    var lebar = parseFloat(document.getElementById('lebar').value);
+
+    // Hitung Luas
+    var luas = panjang * lebar;
+    document.getElementById('luas').value = luas.toFixed(2);
+    
+    // Hitung Keliling
+    var keliling = 2 * (panjang + lebar);
+    document.getElementById('keliling').value = keliling.toFixed(2);
+
+    // Tampilkan hasil di area result
+    document.getElementById('result').innerText = 'Luas: ' + luas.toFixed(2) + ' | Keliling: ' + keliling.toFixed(2);
 }
 
-function calculatePerimeter() {
-    var sideLengthPerimeter = parseFloat(document.getElementById('sidePerimeter').value);
-
-    if (isNaN(sideLengthPerimeter) || sideLengthPerimeter <= 0) {
-        document.getElementById('resultPerimeter').innerHTML = 'Masukkan panjang sisi yang valid.';
-    } else {
-        var perimeter = calculatePerimeterValue(sideLengthPerimeter);
-        document.getElementById('resultPerimeter').innerHTML = 'Keliling: ' + perimeter.toFixed(2);
-    }
+function resetForm() {
+    document.getElementById('panjang').value = '';
+    document.getElementById('lebar').value = '';
+    document.getElementById('luas').value = '';
+    document.getElementById('keliling').value = '';
+    document.getElementById('result').innerText = '';
 }
-
-function calculateCombined() {
-    var sideLengthCombined = parseFloat(document.getElementById('sideCombined').value);
-
-    if (isNaN(sideLengthCombined) || sideLengthCombined <= 0) {
-        document.getElementById('resultCombined').innerHTML = 'Masukkan panjang sisi yang valid.';
-    } else {
-        var areaCombined = calculateAreaValue(sideLengthCombined);
-        var perimeterCombined = calculatePerimeterValue(sideLengthCombined);
-        document.getElementById('resultCombined').innerHTML = 'Luas: ' + areaCombined.toFixed(2) + '<br>Keliling: ' + perimeterCombined.toFixed(2);
-    }
-}
-
-function calculateAreaValue(sideLength) {
-    return sideLength * sideLength;
-}
-
-function calculatePerimeterValue(sideLength) {
-    return 4 * sideLength;
-}
-
-function resetAll() {
-    document.getElementById('sideArea').value = '';
-    document.getElementById('resultArea').innerHTML = '';
-    document.getElementById('sidePerimeter').value = '';
-    document.getElementById('resultPerimeter').innerHTML = '';
-    document.getElementById('sideCombined').value = '';
-    document.getElementById('resultCombined').innerHTML = '';
-}
-
-function updateTime() {
-    var currentTime = new Date();
-    var hours = currentTime.getHours();
-    var minutes = currentTime.getMinutes();
-    var seconds = currentTime.getSeconds();
-
-    document.getElementById('current-time').innerHTML = 'Waktu: ' + hours + ':' + minutes + ':' + seconds;
-}
-
-function calculateAll() {
-    calculateArea();
-    calculatePerimeter();
-    calculateCombined();
-}
-
-// Memanggil updateTime setiap detik
-setInterval(updateTime, 1000);
-
-// Memanggil updateTime pada saat halaman dimuat
-updateTime();

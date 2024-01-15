@@ -1,56 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="https://www.flaticon.com/free-icon/calculator_1031688?term=calculator&page=1&position=3&origin=tag&related_id=1031688" type="image/svg+xml">
-    <title>Persegi Calculator</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="icon" href="image/calculator.png" type="image/x-icon">
+        <title>My Calculator</title>
+    </head>
+    
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Kalkulator Luas dan Keliling Persegi</h1>
-            <div id="current-time"></div>
-        </div>
-    </header>
+    <div class="container">
+        <h1>Kalkulator Hitung Luas dan Keliling Persegi</h1>
 
-    <div class="calculator">
-        <div class="form-container">
-            <h2>Hitung Luas Persegi</h2>
-            <label for="sideArea">Panjang Sisi:</label>
-            <input type="number" id="sideArea" placeholder="Masukkan panjang sisi">
-            <div id="resultArea"></div>
-            <p class="formula">Rumus Luas Persegi: L = s * s</p>
-        </div>
-
-        <div class="form-container">
-            <h2>Hitung Keliling Persegi</h2>
-            <label for="sidePerimeter">Panjang Sisi:</label>
-            <input type="number" id="sidePerimeter" placeholder="Masukkan panjang sisi">
-            <div id="resultPerimeter"></div>
-            <p class="formula">Rumus Keliling Persegi: K = 4 * s</p>
+        <div class="input-form">
+            <form id="calculatorForm">
+                <label for="panjang">Panjang:</label>
+                <input type="number" id="panjang" required>
+        
+                <label for="lebar">Lebar:</label>
+                <input type="number" id="lebar" required>
+        
+                <button type="button" onclick="hitung()">Hitung</button>
+                <button type="reset" onclick="resetForm()">Reset</button>
+            </form>
         </div>
 
-        <div class="form-container">
-            <h2>Hitung Luas dan Keliling Persegi</h2>
-            <label for="sideCombined">Panjang Sisi:</label>
-            <input type="number" id="sideCombined" placeholder="Masukkan panjang sisi">
-            <div id="resultCombined"></div>
-            <p class="formula">Rumus Luas Persegi: L = s * s</p>
-            <p class="formula">Rumus Keliling Persegi: K = 4 * s</p>
-        </div>
+     <!-- ... -->
 
-        <!-- Tombol Hitung dan Reset -->
-        <div class="buttons-container">
-            <button onclick="calculateAll()">Hitung Semua</button>
-            <button onclick="resetAll()">Reset</button>
-        </div>
-    </div>
+<div class="result-form">
+    <label for="luas">Hasil Hitung Luas:</label>
+    <input type="number" id="luas" readonly>
+    <span class="formula">(Panjang × Lebar)</span>
 
-    <footer>
-        <p>&copy; 2024 Adzi Purnomo</p>
-    </footer>
+    <label for="keliling">Hasil Hitung Keliling:</label>
+    <input type="number" id="keliling" readonly>
+    <span class="formula">(2 × (Panjang + Lebar))</span>
+
+    <div class="result" id="result"></div>
+</div>
+
+<!-- ... -->
+<br>
+
+<div class="footer">
+    &copy; 2024 <a href="https://www.instagram.com/adzp18/" target="_blank">Adzi Purnomo</a>
+</div>
+
 
     <script src="js/script.js"></script>
 </body>
